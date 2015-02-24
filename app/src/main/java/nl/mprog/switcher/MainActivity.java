@@ -8,6 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.newthinktank.switchingscreens2.app.SecondScreen;
+
+import nl.mprog.switcher.Human;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -37,7 +41,7 @@ public class MainActivity extends ActionBarActivity {
         // We have to state that are intention is to open another Activity. We do so
         // by passing a Context and the Activity that we want to open
 
-        Intent getNameScreenIntent = new Intent(this, com.newthinktank.switchingscreens2.app.SecondScreen.class);
+//        Intent getNameScreenIntent = new Intent(this, com.newthinktank.switchingscreens2.app.SecondScreen.class);
 
         // We ask for the Activity to start and don't expect a result to be sent back
         // startActivity(getNameScreenIntent);
@@ -48,9 +52,16 @@ public class MainActivity extends ActionBarActivity {
 
         // To send data use putExtra with a String name followed by its value
 
-        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
+//        getNameScreenIntent.putExtra("callingActivity", "MainActivity");
 
-        startActivityForResult(getNameScreenIntent, result);
+
+        Human bob = new Human(6.25, 185, "Bob");
+        
+        Intent sendBob = new Intent(this, SecondScreen.class);
+        
+        sendBob.putExtra("humanBob", bob);
+
+        startActivityForResult(sendBob, result);
 
     }
 

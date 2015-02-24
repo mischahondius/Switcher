@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import nl.mprog.switcher.Human;
+
 public class SecondScreen extends Activity{
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,12 +24,15 @@ public class SecondScreen extends Activity{
 
         // Get the data that was sent
 
-        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
+//        String previousActivity = activityThatCalled.getExtras().getString("callingActivity");
 
+        Human bob = (Human) activityThatCalled.getSerializableExtra("humanBob");
+        
         TextView callingActivityMessage = (TextView)
                 findViewById(R.id.calling_activity_info_text_view);
 
-        callingActivityMessage.append(" " + previousActivity);
+        callingActivityMessage.append(bob.getName() + " " + 
+        bob.getHeight() + "ft" + bob.getWeight() + " lbs");
     }
 
     public void onSendUsersName(View view) {
